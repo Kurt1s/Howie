@@ -1,6 +1,6 @@
 import discord
 
-TOKEN = 'NDkxNDA3MzU4ODIwNDgzMDc0.D23swA.iMSU9syWI9AY4POX-QBfG2IEmZY'
+TOKEN = 'NDkxNDA3MzU4ODIwNDgzMDc0.D3A1gg.2phYPvETPzMs4smj2CqO9X5Avl4'
 
 client = discord.Client()
 
@@ -13,6 +13,15 @@ async def on_message(message):
     if message.content.startswith('!hello'):
         msg = 'Hello {0.author.mention}'.format(message)
         await client.send_message(message.channel, msg)
+
+    if message.content.startswith('!goodbye'):
+        msg = 'Goodbye {0.author.mention}'.format(message)
+        await client.send_message(message.channel, msg)
+
+    if message.content.startswith('!play'):
+        msg = 'Ok I will play some music for you'.format(message)
+        await client.send_message(message.channel,msg)
+        await client.send_typing(message.channel,msg)
 
 @client.event
 async def on_ready():
