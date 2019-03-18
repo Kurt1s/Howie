@@ -2,7 +2,64 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a38e25a3-fb61-4bf8-bbab-9c5aebdad9cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cogs/hello.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cogs/music.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/__main__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/abc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/activity.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/audit_logs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/backoff.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/bin/COPYING" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/bin/libopus-0.x64.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/bin/libopus-0.x86.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/calls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/channel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/colour.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/context_managers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/embeds.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/emoji.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/enums.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/errors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/ext/commands/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/ext/commands/_types.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/ext/commands/bot.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/ext/commands/cog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/ext/commands/context.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/ext/commands/converter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/ext/commands/cooldowns.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/ext/commands/core.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/ext/commands/errors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/ext/commands/help.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/ext/commands/view.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/file.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/gateway.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/guild.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/http.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/invite.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/iterators.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/member.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/message.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/mixins.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/object.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/opus.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/permissions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/player.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/raw_models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/reaction.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/relationship.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/role.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/shard.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/state.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/voice_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/discord/webhook.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Howie.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Howie.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,44 +68,107 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Howie$main.coverage" NAME="main Coverage Results" MODIFIED="1552704726141" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Howie$play.coverage" NAME="play Coverage Results" MODIFIED="1552928768950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Howie$main.coverage" NAME="main Coverage Results" MODIFIED="1552929097476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="74">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cogs/music.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="799">
+              <caret line="59" column="35" lean-forward="true" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#207#604#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cogs/hello.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/play.py" />
+        <option value="$PROJECT_DIR$/music.py" />
+        <option value="$PROJECT_DIR$/cogs/music.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/cogs/hello.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="683" />
     <option name="y" value="40" />
     <option name="width" value="683" />
     <option name="height" value="728" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Howie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Howie" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Howie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Howie" type="462c0819:PsiDirectoryNode" />
+              <item name="cogs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Howie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -59,6 +179,9 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\laren857\Documents\GitHub\Howie\cogs" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\laren857\Documents\GitHub\Howie" />
     </key>
@@ -75,7 +198,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Howie" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -98,9 +221,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="play" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Howie" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/play.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.play" />
       </list>
     </recent_temporary>
   </component>
@@ -114,47 +260,94 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1552704574386</updated>
-      <workItem from="1552704575800" duration="134000" />
+      <workItem from="1552704575800" duration="748000" />
+      <workItem from="1552705357540" duration="814000" />
+      <workItem from="1552832957550" duration="96000" />
+      <workItem from="1552927287478" duration="2669000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134000" />
+    <option name="totallyTimeSpent" value="4327000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12708019" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32843137" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="SciView" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/discord/bin/COPYING">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-192" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cogs/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/play.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="129" column="10" lean-forward="true" selection-start-line="129" selection-start-column="10" selection-end-line="129" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#207#604#0" />
+            <element signature="e#623#647#0" />
+            <element signature="e#752#1443#0" />
+            <element signature="e#1510#1524#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cogs/hello.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="74">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cogs/music.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="59" column="35" lean-forward="true" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#207#604#0" />
+          </folding>
         </state>
       </provider>
     </entry>
