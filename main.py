@@ -53,7 +53,6 @@ async def on_message(message):
         # format_currency(float(price), 'USD', locale='en_US')
         await client.send_message(message.channel, price, tts=True)
 
-
     # Kurtis
     if message.content.startswith('!eth'):
         url = "https://api.coinmarketcap.com/v1/ticker/ethereum/"
@@ -62,8 +61,6 @@ async def on_message(message):
         price = data[0]['price_usd']
         # format_currency(float(price), 'USD', locale='en_US')
         await client.send_message(message.channel, price, tts=True)
-
-
 
 
 @client.event
