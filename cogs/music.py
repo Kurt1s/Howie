@@ -1,5 +1,9 @@
 import asyncio
-
+import asyncio
+import functools
+import logging
+import os
+import pathlib
 import discord
 import youtube_dl
 

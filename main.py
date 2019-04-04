@@ -1,9 +1,8 @@
 import discord
-from cogs.music import Music
 from cogs.hello import Hello
 from discord.ext import commands
-
-
+from cogs.mod import Mod
+from cogs.betterMusic import Music
 TOKEN = 'NDkxNDA3MzU4ODIwNDgzMDc0.D3CBHQ.9AmTEccwmjqcOSd-94CZKkB-H5g'
 
 client = discord.Client()
@@ -28,6 +27,8 @@ async def on_ready():
     print('------')
 
 
-bot.add_cog(Music(bot))
 bot.add_cog(Hello(bot))
+bot.add_cog(Mod(bot))
+bot.add_cog(Music(bot))
+
 bot.run(TOKEN)
