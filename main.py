@@ -1,25 +1,23 @@
 import discord
+from cogs.music import Music
+from cogs.hello import Hello
+from cogs.databases import Database
+from discord.ext import commands
 
-TOKEN = 'NDkxNDA3MzU4ODIwNDgzMDc0.D23swA.iMSU9syWI9AY4POX-QBfG2IEmZY'
-
+TOKEN = 'NTU3MDEyMTM4MDQ5NDA0OTI4.D31Nbw.ugjav9y2vr7YvFF2tA4hRxc2Sy0'
 client = discord.Client()
 
-@client.event
-async def on_message(message):
-    # we do not want the bot to reply to itself
-    if message.author == client.user:
-        return
-
-    if message.content.startswith('!hello'):
-        msg = 'Hello {0.author.mention}'.format(message)
-        await client.send_message(message.channel, msg)
-
-@client.event
+bot = commands.Bot(command_prefix=commands.when_mentioned_or("!"),
+                   description='Learning Bot')
+@bot.event
 async def on_ready():
-    print('Logged in as')
-    print(client.user.name)
-    print(client.user.id)
+    print('Logged in as {0} ({0.id})'.format(bot.user))
     print('------')
 
 
-client.run(TOKEN)
+
+bot.add_cog(Hello(bot))
+bot.add_cog(Mod(bot))
+bot.add_cog(Music(bot))
+
+bot.run(TOKEN)

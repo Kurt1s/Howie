@@ -1,0 +1,7 @@
+#Env related files
+venv/
+.idea/
+.vscode/
+.mypy_cache/
+__pycache__
+
