@@ -1,8 +1,8 @@
-import discord
 from cogs.music import Music
 from cogs.hello import Hello
 from cogs.databases import Database
 from discord.ext import commands
+import discord
 
 TOKEN = 'NTU3MDEyMTM4MDQ5NDA0OTI4.D31Nbw.ugjav9y2vr7YvFF2tA4hRxc2Sy0'
 client = discord.Client()
@@ -17,7 +17,6 @@ async def on_ready():
 
 
 bot.add_cog(Hello(bot))
-bot.add_cog(Mod(bot))
 bot.add_cog(Music(bot))
 
 bot.run(TOKEN)
