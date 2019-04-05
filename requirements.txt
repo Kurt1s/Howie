@@ -5,7 +5,6 @@ certifi==2019.3.9
 cffi==1.12.2
 chardet==3.0.4
 -e git+https://github.com/Rapptz/discord.py.git@dea3ba5eb7c99f54c72b11f3e3f7b8f41649e779#egg=discord.py
-discord.py-rw==1.0.0a0.post2
 idna==2.8
 multidict==4.5.2
 pycparser==2.19
