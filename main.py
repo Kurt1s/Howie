@@ -3,7 +3,7 @@ from cogs.music3 import Music
 from discord.ext import commands
 import discord
 
-TOKEN = 'NDkxNDA3MzU4ODIwNDgzMDc0.XKdMbA.AyThgC1HJmCOawRAzBKn2kaj0Gw'
+TOKEN = 'NTU3MDEyMTM4MDQ5NDA0OTI4.XLk3PA.DGPCm21WO7rtUseO4HjnwY1yRqI'
 
 client = discord.Client()
 
