@@ -108,7 +108,6 @@ class Music(commands.Cog):
     @commands.command()
     @commands.check(audio_playing)
     @commands.check(in_voice_channel)
-
     async def skip(self, ctx):
         """Skips the currently playing song, or votes to skip it."""
         state = self.get_state(ctx.guild)
