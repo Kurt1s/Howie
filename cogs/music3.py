@@ -8,6 +8,15 @@ from urllib import request
 from video import Video
 
 
+
+class VoiceConnectionError(commands.CommandError):
+    '''Custom Exception class for connection errors.'''
+
+
+class InvalidVoiceChannel(VoiceConnectionError):
+    ''''Exception for cases of invalid Voice Channels.'''
+
+
 async def audio_playing(ctx):
     """Checks that audio is currently playing before continuing."""
     client = ctx.guild.voice_client
@@ -235,7 +244,7 @@ class Music(commands.Cog):
 
     #client.wait_for('reaction_add', check=lambda r, u: u.id == 176995180300206080)
     async def on_reaction_add(self, reaction, user):
-        """Respods to reactions added to the bot's messages, allowing reactions to control playback."""
+        """Responds to reactions added to the bot's messages, allowing reactions to control playback."""
         message = reaction.message
         if user != self.bot.user and message.author == self.bot.user:
             await message.remove_reaction(reaction, user)
@@ -294,6 +303,32 @@ class Music(commands.Cog):
 
         state.playlist = new_playlist
         await ctx.send(self._queue_text(state.playlist))
+
+    @commands.command(name='connect', aliases=['join'])
+    async def connect_(self, ctx, *, channel: discord.VoiceChannel = None):
+        # Connect to voice
+        if not channel:
+            try:
+                channel = ctx.author.voice.channel
+            except AttributeError:
+                raise InvalidVoiceChannel('No channel to join. Please either specify a valid channel or join one.')
+
+        vc = ctx.voice_client
+
+        if vc:
+            if vc.channel.id == channel.id:
+                return
+            try:
+                await vc.move_to(channel)
+            except asyncio.TimeoutError:
+                raise VoiceConnectionError(f'Moving to channel: <{channel}> timed out.')
+        else:
+            try:
+                await channel.connect()
+            except asyncio.TimeoutError:
+                raise VoiceConnectionError(f'Connecting to channel: <{channel}> timed out.')
+
+        await ctx.send(f'Connected to: **{channel}**', delete_after=20)
 
 
 class GuildState:
