@@ -408,7 +408,6 @@ class Music(commands.Cog):
         await ctx.send('{0.user} reacted with {0.reaction.emoji}!')
         #await ctx.send_message(message.channel, '{0.user} reacted with {0.reaction.emoji}!')
 
-
     @commands.command(name='pp')
     async def pp(self, ctx, text):
         await ctx.send(text)
