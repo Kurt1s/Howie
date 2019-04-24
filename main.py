@@ -47,7 +47,7 @@ async def on_reaction_add(reaction, user):
         # _pause_audio(self, client)
 
     elif rewindCount > 1:
-        print("REWINDING")
+        print("REWINDING")g
 
     elif fastfowardCount > 1:
         print("SKIPPING")
