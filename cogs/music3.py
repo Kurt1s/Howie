@@ -7,7 +7,8 @@ import math
 from urllib import request
 from video import Video
 
-
+bot = commands.Bot(command_prefix=commands.when_mentioned_or("!"),
+                   description='Learning Bot')
 
 class VoiceConnectionError(commands.CommandError):
     '''Custom Exception class for connection errors.'''
@@ -330,6 +331,34 @@ class Music(commands.Cog):
                 raise VoiceConnectionError(f'Connecting to channel: <{channel}> timed out.')
 
         await ctx.send(f'Connected to: **{channel}**', delete_after=20)
+
+        # @bot.event
+        # async def on_reaction_add(reaction, user):
+        #     # ChID = '487165969903517696'
+        #     # if reaction.message != ChID:
+        #     #     print("")
+        #     print("IN ON REACTION ADD")
+        #     print(reaction)
+        #
+        #     data = {react.emoji: react.count for react in reaction.message.reactions}
+        #     print(data)
+        #
+        #     # stores the number of pause reactions
+        #     pauseplayCount = data.__getitem__("⏯")
+        #     rewindCount = data.__getitem__("⏮")
+        #     fastfowardCount = data.__getitem__("⏭")
+        #
+        #     # pauses/plays if count > 1
+        #     if pauseplayCount > 1:
+        #         print("PAUSING")
+        #         client = ctx.guild.voice_client
+        #         client.pause()
+        #
+        #     elif rewindCount > 1:
+        #         print("REWINDING")
+        #
+        #     elif fastfowardCount > 1:
+        #         print("SKIPPING")
 
 
 class GuildState:
