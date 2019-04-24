@@ -33,6 +33,7 @@ ffmpegopts = {
 ytdl = YoutubeDL(ytdlopts)
 
 
+
 class VoiceConnectionError(commands.CommandError):
     '''Custom Exception class for connection errors.'''
 
@@ -124,7 +125,7 @@ class MusicPlayer:
 
             try:
                 # Wait for the next song. If we timeout cancel the player and disconnect...
-                async with timeout(300):  # 5 minutes...
+                async with timeout(360):  # 6 minutes...
                     source = await self.queue.get()
             except asyncio.TimeoutError:
                 return self.destroy(self._guild)
@@ -407,17 +408,3 @@ class Music(commands.Cog):
         #await ctx.wait_for_reaction(message=message, check=check)
         await ctx.send('{0.user} reacted with {0.reaction.emoji}!')
         #await ctx.send_message(message.channel, '{0.user} reacted with {0.reaction.emoji}!')
-
-
-    @commands.command(name='pp')
-    async def pp(self, ctx, text):
-        await ctx.send(text)
-        await ctx.add_reaction('\N{CROSS MARK}')
-        print("asdfsdf")
-
-    @commands.command()
-    async def poll(self, text, *emojis: discord.Emoji):
-        print("aspdfpsapfdpsadpfp")
-        msg = self.send(text)
-        for emoji in emojis:
-            msg.add_reaction(emoji)
