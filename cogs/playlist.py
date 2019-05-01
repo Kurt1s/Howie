@@ -8,7 +8,6 @@ from urllib import request
 from video import Video
 
 
-
 class VoiceConnectionError(commands.CommandError):
     '''Custom Exception class for connection errors.'''
 
@@ -243,6 +242,7 @@ class Music(commands.Cog):
                 raise commands.CommandError("You need to be in a voice channel to do that.")
 
     #client.wait_for('reaction_add', check=lambda r, u: u.id == 176995180300206080)
+    '''Currently Not Working'''
     async def on_reaction_add(self, reaction, user):
         """Responds to reactions added to the bot's messages, allowing reactions to control playback."""
         message = reaction.message
@@ -281,29 +281,35 @@ class Music(commands.Cog):
         for control in CONTROLS:
             await message.add_reaction(control)
 
-    @commands.command()
-    async def voteup(self, ctx, member, song: int):
-        state = self.get_state(ctx.guild)
-        await ctx.send(self._queue_text(state.playlist))
-        state.priority_votes.add(song, member)
+
+
+        """Nominate two songs and then after a voting period add the song"""
 
 
     #needs to be redone with sets?
-    async def reorganize_playlist(self, ctx):
-        state = self.get_state(ctx.guild)
-        current = state.priority_votes
-        key_values = []
-        new_playlist = []
-        for key in current.keys(): #take values from current and puts them in key_values
-            key_values.add(len(current.get(key)))
-        key_values.sort(reverse=True) #sorts key_Values from largest to smallest
-        for key in key_values:
-            #not rishgt
-            new_playlist.add(current.get(key)) # creates a new playlist
+    #Not currently working
+    async def nomintate(self, ctx, *, url):
+        client = ctx.guild.voice_client
+        state = self.get_state(ctx.guild)  # get the guild's state
 
-        state.playlist = new_playlist
-        await ctx.send(self._queue_text(state.playlist))
+        state.nominations.add(url)
+        if state.nominations==2:
+            self.printNom(self, ctx)
 
+
+
+
+
+    def printNom(self, ctx):
+        state = self.get_state(ctx.guild)  # get the guild's state
+        message = "Song One: " + state.nominations[0] + "/n Song Two" + state.nominations[1]
+        await ctx.send(message)
+
+    @commands.command(name="one" ,aliases=["1"])
+    async def votefirst(self,ctx):
+        client = ctx.guild.voice_client
+        state = self.get_state(ctx.guild)  # get the guild's state
+        state.nominationVotes.put(ctx.user, )
     @commands.command(name='connect', aliases=['join'])
     async def connect_(self, ctx, *, channel: discord.VoiceChannel = None):
         # Connect to voice
@@ -339,7 +345,8 @@ class GuildState:
         self.playlist = []
         self.skip_votes = set()
         self.now_playing = None
-        self.priority_votes = dict()
+        self.nominations =[]
+        self.nominationVotes = dict()
 
     def is_requester(self, user):
         return self.now_playing.requested_by == user

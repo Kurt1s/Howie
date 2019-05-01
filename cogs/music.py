@@ -1,11 +1,14 @@
 import asyncio
-
 import discord
 import youtube_dl
-
 from discord.ext import commands
 from database.models import YoutubePlaylist
 from cogs.databases import *
+
+
+#NOT CURRENTLY IN USE
+
+
 # Suppress noise about console usage from errors
 youtube_dl.utils.bug_reports_message = lambda: ''
 
@@ -138,6 +141,4 @@ class Music(commands.Cog):
             ctx.voice_client.stop()
 
 
-
-bot = commands.Bot(command_prefix=commands.when_mentioned_or("!"),
-                   description='Relatively simple music bot example')
+bot = commands.Bot(command_prefix=commands.when_mentioned_or("!"), description='Simple Music Bot')

@@ -16,6 +16,7 @@ session = Session()
 if not engine.dialect.has_table(engine, 'event'):
     Base.metadata.create_all(engine)
 
+
 class Database(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -51,8 +52,8 @@ class Database(commands.Cog):
         #set it as its own variable
         #in existing check if user discord id was already in user
         #should we have it so you can change the name associated with discord id?
-            #if yes than existing needs to change
-            #if no than need to add discordid = session.query(Users).filter(Users.discord_id == discordidvar).first()
+        #if yes than existing needs to change
+        #if no than need to add discordid = session.query(Users).filter(Users.discord_id == discordidvar).first()
         userId = ctx.message.author.id
         #hi = self.get_user_info(userId)
         try:
@@ -135,7 +136,6 @@ class Database(commands.Cog):
         except Exception as e:
             await ctx.send('Could not complete your command')
             print(e)
-
 
     @commands.command(pass_context=True)
     async def addsong(self, ctx, songname: str, songurl: str):
