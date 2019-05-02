@@ -1,10 +1,12 @@
 from discord.ext import commands
+from cogs.databases import Database
 import discord
 import asyncio
 import youtube_dl
 import logging
 import math
-from urllib import request
+import requests
+from bs4 import BeautifulSoup as bs
 from video import Video
 
 
@@ -144,6 +146,18 @@ class Music(commands.Cog):
             logging.info(f"Enough votes, skipping...")
             channel.guild.voice_client.stop()
 
+    '''useless"
+    @commands.command(name='vote')
+    async def vote(self, ctx):
+        #await ctx.send("Please Vote", delete_after=20)
+        await ctx.message.add_reaction('\N{CROSS MARK}')
+        await asyncio.sleep(10)  # wait for 10 Seconds
+        print("Waited")
+        if ctx.message.reactions.count > 0:
+            print("Skip")
+            await self.skip_()
+        print("so skip")
+'''
     def _play_song(self, client, state, song):
         state.now_playing = song
         state.skip_votes = set()  # clear skip votes
@@ -164,8 +178,9 @@ class Music(commands.Cog):
     async def nowplaying(self, ctx):
         """Displays information about the current song."""
         state = self.get_state(ctx.guild)
-        message = await ctx.send("", embed=state.now_playing.get_embed())
-        await self._add_reaction_controls(message)
+        #message =
+        await ctx.send("", embed=state.now_playing.get_embed())
+        #await self._add_reaction_controls(message)
 
     @commands.command(aliases=["q", "playlist"])
     @commands.check(audio_playing)
@@ -223,9 +238,9 @@ class Music(commands.Cog):
                     "There was an error downloading your video, sorry.")
                 return
             state.playlist.append(video)
-            message = await ctx.send(
-                "Added to queue.", embed=video.get_embed())
-            await self._add_reaction_controls(message)
+            #message = \
+            await ctx.send("Added to queue.", embed=video.get_embed())
+            #await self._add_reaction_controls(message)
         else:
             if ctx.author.voice != None and ctx.author.voice.channel != None:
                 channel = ctx.author.voice.channel
@@ -236,50 +251,131 @@ class Music(commands.Cog):
                     return
                 client = await channel.connect()
                 self._play_song(client, state, video)
-                message = await ctx.send("", embed=video.get_embed())
-                await self._add_reaction_controls(message)
+                #message =
+                await ctx.send("", embed=video.get_embed())
+                #await self._add_reaction_controls(message)
                 logging.info(f"Now playing '{video.title}'")
             else:
                 raise commands.CommandError("You need to be in a voice channel to do that.")
+        author = ctx.author.name
+        await Database.addsong(self, ctx, author, url, video.video_url)
+
 
     #client.wait_for('reaction_add', check=lambda r, u: u.id == 176995180300206080)
-    async def on_reaction_add(self, reaction, user):
-        """Responds to reactions added to the bot's messages, allowing reactions to control playback."""
-        message = reaction.message
-        if user != self.bot.user and message.author == self.bot.user:
-            await message.remove_reaction(reaction, user)
-            if message.guild and message.guild.voice_client:
-                user_in_channel = user.voice and user.voice.channel and user.voice.channel == message.guild.voice_client.channel
-                permissions = message.channel.permissions_for(user)
-                guild = message.guild
-                state = self.get_state(guild)
-                if permissions.administrator or (user_in_channel and state.is_requester(user)):
-                    client = message.guild.voice_client
-                    if reaction.emoji == "⏯":
-                        # pause audio
-                        self._pause_audio(client)
-                    elif reaction.emoji == "⏭":
-                        # skip audio
-                        client.stop()
-                    elif reaction.emoji == "⏮":
-                        state.playlist.insert(0, state.now_playing)  # insert current song at beginning of playlist
-                        client.stop()  # skip ahead
-                elif reaction.emoji == "⏭"and user_in_channel and message.guild.voice_client and message.guild.voice_client.channel: # ensure that skip was pressed the user is in the channel, and that the bot is in a voice channel
-                    voice_channel = message.guild.voice_client.channel
-                    self._vote_skip(voice_channel, user)# announce vote
-                    channel = message.channel
-                    users_in_channel = len([
-                        member for member in voice_channel.members
-                        if not member.bot
-                    ])  # don't count bots
-                    required_votes = math.ceil(.5 * users_in_channel)
-                    await channel.send(f"{user.mention} voted to skip ({len(state.skip_votes)}/{required_votes} votes)")
+    # async def on_reaction_add(self, ctx, reaction, user):
+    #     """Responds to reactions added to the bot's messages, allowing reactions to control playback."""
+    #     message = reaction.message
+    #     if user != self.bot.user and message.author == self.bot.user:
+    #         await message.remove_reaction(reaction, user)
+    #         if message.guild and message.guild.voice_client:
+    #             user_in_channel = user.voice and user.voice.channel and user.voice.channel == message.guild.voice_client.channel
+    #             permissions = message.channel.permissions_for(user)
+    #             guild = message.guild
+    #             state = self.get_state(guild)
+    #             if permissions.administrator or (user_in_channel and state.is_requester(user)):
+    #                 client = message.guild.voice_client
+    #                 if reaction.emoji == "⏯":
+    #                     # pause audio
+    #
+    #                     if reaction.count > 1:
+    #                         self.pause(self)
+    #                         ctx.send(reaction.count)
+    #                 elif reaction.emoji == "⏭":
+    #                     # skip audio
+    #                     if reaction.count > 1:
+    #                         client.stop()
+    #                 elif reaction.emoji == "⏮":
+    #                     if reaction.count > 1:
+    #                         state.playlist.insert(0, state.now_playing)  # insert current song at beginning of playlist
+    #                         client.stop()  # skip ahead
+    #             elif reaction.emoji == "⏭"and user_in_channel and message.guild.voice_client and message.guild.voice_client.channel: # ensure that skip was pressed the user is in the channel, and that the bot is in a voice channel
+    #                 voice_channel = message.guild.voice_client.channel
+    #                 self._vote_skip(voice_channel, user)# announce vote
+    #                 channel = message.channel
+    #                 users_in_channel = len([
+    #                     member for member in voice_channel.members
+    #                     if not member.bot
+    #                 ])  # don't count bots
+    #                 required_votes = math.ceil(.5 * users_in_channel)
+    #                 await channel.send(f"{user.mention} voted to skip ({len(state.skip_votes)}/{required_votes} votes)")
 
-    async def _add_reaction_controls(self, message):
-        """Adds a 'control-panel' of reactions to a message that can be used to control the bot."""
-        CONTROLS = ["⏮", "⏯", "⏭"]
-        for control in CONTROLS:
-            await message.add_reaction(control)
+    # async def _add_reaction_controls(self, message):
+    #     """Adds a 'control-panel' of reactions to a message that can be used to control the bot."""
+    #
+    #     CONTROLS = ["⏮", "⏯", "⏭"]
+    #     for control in CONTROLS:
+    #         await message.add_reaction(control)
+
+    @commands.command(brief="Plays audio from <url> playlist.")
+    async def ytplaylist(self, ctx, *, url):
+        """Plays audio hosted at <url> (or performs a search for <url> and plays the first result)."""
+        count = 0
+        channel = ctx.author.voice.channel
+        client = ctx.guild.voice_client
+        state = self.get_state(ctx.guild)
+        sourceCode = requests.get(url).text
+        soup = bs(sourceCode, 'html.parser')
+        domain = 'https://www.youtube.com'
+        for link in soup.find_all("a", {"dir": "ltr"}):
+            href = link.get('href')
+            if href.startswith('/watch?'):
+                print(link.string.strip())
+            song = (domain + href)
+            # count = count+1
+            # video = Video(song, ctx.author)
+            # state.playlist.append(song)
+            await ctx.send(song)
+            # self._play_song(client,state,video)
+            # await ctx.send("", embed=video.get_embed())
+            # logging.info(f"Now playing '{video.title}'")
+
+        # client = ctx.guild.voice_client
+        # state = self.get_state(ctx.guild)  # get the guild's state
+        #
+        # if client and client.channel:
+        #     try:
+        #         video = Video(url, ctx.author)
+        #     except youtube_dl.DownloadError as e:
+        #         logging.warn(f"Error downloading videos in playlist: {e}")
+        #         await ctx.send(
+        #             "There was an error downloading your videos, sorry.")
+        #         return
+        #     r = requests.get(url)
+        #     page = r.text
+        #     soup = bs(page, 'html.parser')
+        #     res = soup.find_all('a', {'class': 'pl-video-title-link'})
+        #     for l in res:
+        #         await ctx.send(l.get("href"))
+        #         self.play("http.youtube.com"+l.get("href"))
+        #
+        #
+        #     state.playlist.append(video)
+        #     #message =
+        #     await ctx.send("Added to queue.", embed=video.get_embed())
+        #     #await self._add_reaction_controls(message)
+        # else:
+        #     if ctx.author.voice != None and ctx.author.voice.channel != None:
+        #         channel = ctx.author.voice.channel
+        #         r = requests.get(url)
+        #         page = r.text
+        #         soup = bs(page, 'html.parser')
+        #         res = soup.find_all('a', {'class': 'pl-video-title-link'})
+        #         for l in res:
+        #             song = "http.youtube.com"+l.get("href")
+        #             try:
+        #                 video = Video(song, ctx.author)
+        #             except youtube_dl.DownloadError as e:
+        #                 await ctx.send("There was an error downloading your video, sorry.")
+        #                 return
+        #             client = await channel.connect()
+        #             await ctx.send(l.get("href"))
+        #             self._play_song(client, state, video)
+        #             # message =
+        #             await ctx.send("", embed=video.get_embed())
+        #             # await self._add_reaction_controls(message)
+        #             logging.info(f"Now playing '{video.title}'")
+        #     else:
+        #         raise commands.CommandError("You need to be in a voice channel to do that.")
 
     @commands.command()
     async def voteup(self, ctx, member, song: int):
