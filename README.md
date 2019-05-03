@@ -21,7 +21,7 @@ Learning Bot
   Music:
   
   
-    connect    
+    connect    Connects to a voice channel, if currently in one.
     
     
     leave      Leaves the voice channel, if currently in one.
@@ -30,7 +30,8 @@ Learning Bot
     volume <integer>      Adjusts volume to desired percentage from 0 to 100, by the audio requester
     
     
-    play       Plays audio from <url>.
+    play       Plays audio from <url> if user is in voice channel. If bot is not in voice channel will have bot join user's
+               channel and then play audio.
     
     
     vote       Allows users to vote on skipping a song depending on set amount of votes, or if user is an admin 
@@ -45,7 +46,7 @@ Learning Bot
 
     help       Shows this message
 
- Depricated commands:
+ Depricated Commands:
                                                  
     hello         Get a Greeting message from bot
     
