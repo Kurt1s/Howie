@@ -41,6 +41,16 @@ Learning Bot
 
     help       Shows this message
 
+ Depricated commands:
+
+        !countdown - Bot counts down out loud
+        !poll <PollName> <Emojis>
+        !quote - Get a random quote about thought
+        !btc - Get bitcoin price
+        !eth - Get etherium price
+        !stream <URL> - Have the Bot play a song from desired URL
+        !ascii <ImageURL> - Returns a link to the ascii version of the image
+
   Type !help command for more info on a command.
   You can also type !help category for more info on a category.
   
